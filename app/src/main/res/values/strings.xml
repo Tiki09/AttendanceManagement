@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">AttandanceManagementSystem</string>
+
+
+    <string-array name="Role">
+        <item>Select Role</item>
+        <item>Developer</item>
+        <item>Tester</item>
+        <item>PM</item>
+        <item>DM</item>
+        <item>HR</item>
+        <item>intern</item>
+        <item>support engineer</item>
+    </string-array>
+</resources>

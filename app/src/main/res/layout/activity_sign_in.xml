@@ -20,7 +20,7 @@
         android:textStyle="bold"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edEmployeeId"
+        android:id="@+id/tvEmployeeId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/tvCredentials"
@@ -33,14 +33,15 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:id="@+id/edEmployeeId"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edPwd"
+        android:id="@+id/tvPwd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/edEmployeeId"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmployeeId"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginHorizontal="20dp"
@@ -50,7 +51,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:id="@+id/edPwd"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -62,7 +64,7 @@
         android:textColor="#0974A5"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/edPwd" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPwd" />
 
     <Button
         android:id="@+id/btnSignIn"

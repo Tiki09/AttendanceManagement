@@ -13,20 +13,21 @@
         android:theme="@style/Theme.AttandanceManagementSystem"
         tools:targetApi="31">
         <activity
-            android:name=".DashboardActivity"
+            android:name=".AttendanceActivity"
             android:exported="false" />
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
+        <activity
+            android:name=".DashboardActivity"
+            android:exported="false" /> <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
         <activity
             android:name=".ForgotPasswordActivity"
             android:exported="false" />
         <activity
             android:name=".SignInActivity"
-            android:exported="false" />
+            android:exported="true"></activity>
         <activity
             android:name=".SignUpActivity"
             android:exported="true">

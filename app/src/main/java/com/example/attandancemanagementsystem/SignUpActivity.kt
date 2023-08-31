@@ -75,30 +75,42 @@ class SignUpActivity : AppCompatActivity() {
 
             if (chkValidation() == true) {
 
-                db.collection("register")
-                    .whereEqualTo("email",email)
-                    .get().addOnSuccessListener {
-                    for (querySnapshotdoc in it){
-                        Toast.makeText(this,"Email already exists",Toast.LENGTH_SHORT).show()
-                    }
+                emailValidation()
+                if (canEmailRegistered == false) {
+                   canEmailRegistered = false
+                    var registerDataItem =
+                        RegisterExtra(email, name, eid, pwd, cnfrmPwd, spinnerRole)
+                    db.collection("register").document().set(registerDataItem)
+                        .addOnCompleteListener {
+                            if (it.isSuccessful) {
+                                Toast.makeText(this, "data Added", Toast.LENGTH_SHORT).show()
+                                val intent = Intent(this, DashboardActivity::class.java)
+                                startActivity(intent)
+                            } else {
+                                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+
                 }
 
-                var registerDataItem = RegisterExtra(email, name, eid, pwd, cnfrmPwd, spinnerRole)
-                db.collection("register").document().set(registerDataItem).addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        Toast.makeText(this, "data Added", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this, DashboardActivity::class.java)
-                        startActivity(intent)
-                    } else {
-                        Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
-                    }
-                }
             }
 
 
             Log.e("aaa", "${chkValidation()}")
 
         }
+    }
+
+    var canEmailRegistered = false
+    fun emailValidation() {
+        db.collection("register")
+            .whereEqualTo("email", email)
+            .get().addOnSuccessListener {
+                for (querySnapshotdoc in it) {
+                    canEmailRegistered = true
+                    Toast.makeText(this, "Email already exists", Toast.LENGTH_SHORT).show()
+                }
+            }
     }
 
     fun chkValidation(): Boolean {
@@ -127,9 +139,8 @@ class SignUpActivity : AppCompatActivity() {
         } else if (pwd != cnfrmPwd) {
             registerBinding.edtTxtConfirmPwd.error = "Your Password is not matching"
             return false
-        }
-        else if(spinnerRole.isEmpty()){
-            Toast.makeText(this, "Please Select Your Role",Toast.LENGTH_SHORT).show()
+        } else if (spinnerRole.isEmpty()) {
+            Toast.makeText(this, "Please Select Your Role", Toast.LENGTH_SHORT).show()
             return false
         }
         return true
